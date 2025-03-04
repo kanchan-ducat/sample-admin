@@ -125,6 +125,16 @@ exports.updateUser = async (req, res) => {
     res.status(400).json({ success: false, message: error.message });
   }
 };
+// activate user by ID (Set status to 'Active')
+exports.activateUser = async (req, res) => {
+    try {
+      const user = await User.findByIdAndUpdate(req.params.id, { status: 'Active' }, { new: true });
+      if (!user) return res.status(404).json({ success: false, message: 'User not found' });
+      res.status(200).json({statusCode:200, success: true, message: 'User activated successfully', data: user });
+    } catch (error) {
+      res.status(500).json({ success: false, message: error.message });
+    }
+  };
 // Deactivate user by ID (Set status to 'Inactive')
 exports.deactivateUser = async (req, res) => {
     try {

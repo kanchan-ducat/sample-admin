@@ -7,7 +7,7 @@ const {
     updateUser,
     deactivateUser,
     deleteUser,
-  
+    activateUser
   } = require('../controllers/userController');
 
 
@@ -17,6 +17,7 @@ router.get('/', getAllUsers);
 router.get('/:id', getUserById);
 router.put('/:id', updateUser);
 router.put('/:id/deactivate', deactivateUser); // Deactivate user
+router.put('/:id/activate',activateUser); // Deactivate user
 router.delete('/:id', deleteUser);
 
 module.exports = router;

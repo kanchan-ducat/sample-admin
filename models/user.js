@@ -94,7 +94,6 @@ const userSchema = new mongoose.Schema({
   prompt_status_Verification: { type: String },
   purchase: { type: String },
   question: { type: String },
-  Rasa: { type: String },
   school: { type: String },
   score: { type: Number },
   email:{type: String, required: true, unique: true },

@@ -14,8 +14,8 @@ const {
 
 
 
-router.post('/create', createTenant);
-router.get('/all', getAllTenants);
+router.post('/', createTenant);
+router.get('/', getAllTenants);
 router.get('/:id', getTenantById);
 router.put('/:id', updateTenant);
 router.delete('/:id', deleteTenant);
