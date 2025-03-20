@@ -8,6 +8,8 @@ const tenantRoutes = require('./routes/tenants');  // Import tenant routes
 const investorsRoute = require("./routes/investor"); //Import investor routes
 const adminUserRoutes = require("./routes/adminUser"); // Import Admin User routes
 const industriesRoutes = require("./routes/industries");//Industries
+const courseRoutes = require("./routes/course");//course
+
 const userRoutes = require("./routes/user");//admin
 const gradeSubjectRoutes = require('./routes/gradeSubject');//grade
 const app = express();
@@ -31,14 +33,14 @@ mongoose.connect('mongodb://localhost:27017/edyou-backend')
 app.use('/api/tenants', tenantRoutes);
 
 app.use("/api/investors", investorsRoute);
-
+app.use("/api/course",courseRoutes);
 
 app.use("/api/admin_users", adminUserRoutes);
 app.use("/api/users", userRoutes); 
 app.use("/api/industries", industriesRoutes); 
 app.use("/api/grade_subject", gradeSubjectRoutes); 
 app.use((err, req, res, next) => {
-    console.error("🔥 ERROR:", err.stack);
+    console.error(" ERROR:", err.stack);
     res.status(500).json({ message: "Internal Server Error" });
   });
  

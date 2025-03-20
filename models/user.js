@@ -132,7 +132,8 @@ const userSchema = new mongoose.Schema({
   token: { type: String },
   trial_period: { type: Number },
   whichStep: { type: Number },
-  zip: { type: String }
+  zip: { type: String },
+  
 });
 
 module.exports = mongoose.model('User', userSchema);

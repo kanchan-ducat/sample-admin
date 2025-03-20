@@ -15,6 +15,7 @@ const AdminUserSchema = new mongoose.Schema({
       return `${this.f_name} ${this.l_name}`;
     },
   },
+   tenantId: { type: mongoose.Schema.Types.ObjectId, ref: "Tenant" } ,
   password: { type: String, required: true }, // Should be hashed before saving
   role: { type: String, required: true, enum: ["CoTenant", "Admin", "User"] },
   tenantEmail: { type: String, required: true },

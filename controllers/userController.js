@@ -5,19 +5,21 @@ const Tenant = require('../models/tenants');
 exports.createUser = async (req, res) => {
   try {
     // Destructure required fields from request body
-    const { f_name, l_name, email, password, phone, status, expire_time, emailbyUser, timeZone, tenantEmail,lastlogin } = req.body;
+    const { f_name, l_name, email, password, phone, status, expire_time, emailbyUser, timeZone, tenantId,lastlogin } = req.body;
 
     // Validation to check required fields
     if (!f_name || !email ) {
       return res.status(400).json({ success: false, message: "First name, last name, email, and password are required." });
     }
  // Find industry by tenantEmail instead of industry ID
-if (tenantEmail) {
- 
-  const tenantRecord = await Tenant.findOne({ email: tenantEmail });
+if (tenantId) {
+  
+  const tenantRecord = await Tenant.findOne({ _id: tenantId });
   if (tenantRecord) {
+    
     tenantName = tenantRecord.name; // Assign from industry name
     avatarName = tenantRecord.avatar;
+    tenantEmail = tenantRecord.email
   } else {
     return res.status(404).json({ message: "Industry not found for the given tenantEmail" });
   }
@@ -71,7 +73,7 @@ if (avatarName) {
 };
 
 
-// Get all users with LIFO (newest first) and pagination
+// Get (newest first) and pagination
 exports.getAllUsers = async (req, res) => {
     try {
       let { page = 1, limit = 10 } = req.query;
