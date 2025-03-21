@@ -1,0 +1,64 @@
+### Node.js dependencies ###
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+### Logs ###
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+### Environment variables ###
+.env
+.env.local
+.env.*.local
+
+### Database files ###
+/data/
+*.sqlite
+*.sqlite-journal
+dump.rdb
+dump.rdb.bak
+db.json
+
+### MongoDB ###
+*.mongodb/
+*.mongo/
+mongod.lock
+mongod.pid
+
+### Debugging ###
+.vscode/
+.idea/
+.DS_Store
+
+### Build files ###
+dist/
+build/
+
+### Temporary files ###
+*.swp
+*.swo
+*.bak
+*.tmp
+
+### Deployment ###
+/.serverless/
+/.firebase/
+
+### Miscellaneous ###
+coverage/
+public/uploads/
+thumbs.db
+out/
+.next/
+vercel/
+/.nuxt/
