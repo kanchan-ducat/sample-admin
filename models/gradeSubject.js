@@ -15,7 +15,7 @@ const gradeSubjectSchema = new mongoose.Schema(
     tenantIds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tenant', required: true }],
   
     gradeSubjectUi:{type: String, required: true},
-    Grade: { type: String },
+    grade: { type: String },
     Subject: { type: String, required: true }, // Ensures uniqueness
     course_credit: { type: Number, default: 0 },
     quiz_credit: { type: Number, default: 0 },

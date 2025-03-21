@@ -6,7 +6,7 @@ const CourseSchema = new mongoose.Schema({
   created_at: { type: Date, default: Date.now },
   data: { type: mongoose.Schema.Types.Mixed },
   description: { type: String },
-  grade: { type: String},
+  grade: { type: String },
   // grade_subject: { type: String, required: true },
   loginToken: { type: String },
   

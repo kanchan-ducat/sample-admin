@@ -1,11 +1,37 @@
 const Course = require('../models/course');
-const { GradeSubject, Counter } = require('../models/gradeSubject');
+const { GradeSubject } = require('../models/gradeSubject');
 // @desc    Create a new course
 // @route   POST /api/courses
+console.log(GradeSubject)
 exports.createCourse = async (req, res) => {
   try {
-    const grade = await GradeSubject.findOne({ subjectId });
-    const course = new Course(req.body);
+    
+    const { grade,subjectId,chapter,description,status,tenantId, title,uploadType } = req.body;
+     // Validate required fields
+     if (!subjectId || !chapter || !tenantId || !title || !uploadType) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+    console.log(subjectId,'maybe')
+   
+    const gradefound = await GradeSubject.findById(subjectId);
+   
+    if (!gradefound) {
+      return res.status(404).json({ error: "Grade not found for the given subjectId", grade});
+    }
+    const grade1 = gradefound.grade; // Ensure `grade` exists
+
+    // Include grade in the course object
+    const course = new Course({
+      subjectId,
+      chapter,
+      description,
+      status,
+      tenantId,
+      title,
+      uploadType,
+      grade : grade1 // Assuming `grade` is the field you need
+    });
+    
     await course.save();
     res.status(201).json(course);
   } catch (error) {

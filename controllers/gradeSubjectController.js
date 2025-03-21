@@ -142,7 +142,7 @@ exports.getSubjectsByTenant = async (req, res) => {
   try {
       // const { tenantId } = req.params;
       const { id: tenantId } = req.params; 
-      console.log("Subjects found:", tenantId);
+      // console.log("Subjects found:", tenantId);
       // Fetch subjects from MongoDB based on tenantId
       const filteredSubjects = await GradeSubject.find({ tenantIds: tenantId })
           .select('_id Subject'); // Selecting only `_id` and `Subject` fields
